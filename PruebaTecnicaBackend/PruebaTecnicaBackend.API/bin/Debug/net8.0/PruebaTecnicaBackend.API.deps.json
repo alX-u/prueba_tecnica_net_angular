@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "PruebaTecnicaBackend.API/1.0.0": {
+        "dependencies": {
+          "PruebaTecnicaBackend.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "PruebaTecnicaBackend.API.dll": {}
+        }
+      },
+      "PruebaTecnicaBackend.Contracts/1.0.0": {
+        "runtime": {
+          "PruebaTecnicaBackend.Contracts.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PruebaTecnicaBackend.API/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PruebaTecnicaBackend.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

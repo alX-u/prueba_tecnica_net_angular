@@ -1,0 +1,12 @@
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\bin\Debug\net8.0\PruebaTecnicaBackend.Contracts.deps.json
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\bin\Debug\net8.0\PruebaTecnicaBackend.Contracts.dll
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\bin\Debug\net8.0\PruebaTecnicaBackend.Contracts.pdb
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.AssemblyInfoInputs.cache
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.AssemblyInfo.cs
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.sourcelink.json
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.dll
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\refint\PruebaTecnicaBackend.Contracts.dll
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\PruebaTecnicaBackend.Contracts.pdb
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.Contracts\obj\Debug\net8.0\ref\PruebaTecnicaBackend.Contracts.dll
