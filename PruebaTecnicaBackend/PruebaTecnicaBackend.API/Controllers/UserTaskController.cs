@@ -1,5 +1,5 @@
 using PruebaTecnicaBackend.Contracts.UserTask;
-using PruebaTecnicaBackend.API.Models;
+using PruebaTecnicaBackend.API.Domain.Models;
 using PruebaTecnicaBackend.API.Services.UserTasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +19,8 @@ namespace PruebaTecnicaBackend.API.Controllers
         [HttpPost("")]
         public async Task<IActionResult> CreateTask(CreateUserTaskRequest request)
         {
-            var task = new UserTask(
+            //Map the request
+            var task = new UserTaskModel(
                 Guid.NewGuid(),
                 request.Title,
                 request.Description,
@@ -31,6 +32,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             // Save the task to the database
             await _userTasksService.CreateUserTask(task);
 
+            // Map the task to the response
             var response = new UserTaskResponse(
                 task.Id,
                 task.Title,
@@ -50,8 +52,9 @@ namespace PruebaTecnicaBackend.API.Controllers
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetTask(Guid id)
         {
-            UserTask userTask = await _userTasksService.GetUserTaskById(id);
+            UserTaskModel userTask = await _userTasksService.GetUserTaskById(id);
 
+            //Map the userTask to the response
             var response = new UserTaskResponse(
                 userTask.Id,
                 userTask.Title,
