@@ -10,4 +10,9 @@ public class UserTaskEntity
     public UserTaskStatus Status { get; set; }
     public DateTime CreatedDateTime { get; set; }
     public DateTime LastModifiedDateTime { get; set; }
+
+    // Foreign Key
+    // Foreign Key
+    public Guid? UserId { get; set; }  // Hacerlo nullable
+    public UserEntity User { get; set; }
 }
