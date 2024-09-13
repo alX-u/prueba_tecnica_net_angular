@@ -34,7 +34,8 @@ namespace PruebaTecnicaBackend.API.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,16 +56,16 @@ namespace PruebaTecnicaBackend.API.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    AssignedTo = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    LastModifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserTasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserTasks_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_UserTasks_Users_AssignedTo",
+                        column: x => x.AssignedTo,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
@@ -75,9 +76,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                 columns: new[] { "Id", "CreatedDateTime", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("ba25cf77-2fd5-4fa6-a183-b863a98c1052"), new DateTime(2024, 9, 13, 6, 47, 35, 74, DateTimeKind.Utc).AddTicks(1156), "Supervisor" },
-                    { new Guid("de5377c3-c83f-481f-b5e7-414a94e82c5e"), new DateTime(2024, 9, 13, 6, 47, 35, 74, DateTimeKind.Utc).AddTicks(1158), "Empleado" },
-                    { new Guid("f0f89436-93ae-4071-b1c8-2a112e335683"), new DateTime(2024, 9, 13, 6, 47, 35, 74, DateTimeKind.Utc).AddTicks(1170), "Administrador" }
+                    { new Guid("8d326e35-8a37-44ad-86a8-ef2ebed5d233"), new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4822), "Empleado" },
+                    { new Guid("93ea1de6-08d6-4531-8e84-df8532b89cf6"), new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4824), "Administrador" },
+                    { new Guid("ea0e85f4-1eb6-4616-9940-559adfe428e2"), new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4777), "Supervisor" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -86,9 +87,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserTasks_UserId",
+                name: "IX_UserTasks_AssignedTo",
                 table: "UserTasks",
-                column: "UserId");
+                column: "AssignedTo");
         }
 
         /// <inheritdoc />

@@ -17,18 +17,18 @@ namespace PruebaTecnicaBackend.API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure the many-to-one relationship between UserEntity and UserRoleEntity
+            // Configure the relationship between UserEntity and UserRoleEntity
             modelBuilder.Entity<UserEntity>()
                 .HasOne(u => u.Role)
                 .WithMany()
                 .HasForeignKey(u => u.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure the one-to-many relationship between UserEntity and UserTaskEntity
+            // Configure the relationship between UserEntity and UserTaskEntity
             modelBuilder.Entity<UserEntity>()
                 .HasMany(u => u.AssignedTasks)
                 .WithOne(t => t.User)
-                .HasForeignKey(t => t.UserId)
+                .HasForeignKey(t => t.AssignedTo)
                 .OnDelete(DeleteBehavior.SetNull);
 
             // Seed data for UserRoleEntity

@@ -11,6 +11,7 @@ public static class UserTaskMapper
             Title = model.Title,
             Description = model.Description,
             Status = model.Status,
+            AssignedTo = model.AssignedTo == Guid.Empty ? null : model.AssignedTo,
             CreatedDateTime = model.CreatedDateTime,
             LastModifiedDateTime = model.LastModifiedDateTime
         };
@@ -23,6 +24,7 @@ public static class UserTaskMapper
             entity.Title,
             entity.Description,
             entity.Status,
+            entity.AssignedTo = entity.AssignedTo == Guid.Empty ? null : entity.AssignedTo,
             entity.CreatedDateTime,
             entity.LastModifiedDateTime
         );

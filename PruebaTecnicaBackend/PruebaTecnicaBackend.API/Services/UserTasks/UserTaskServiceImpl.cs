@@ -17,6 +17,7 @@ public class UserTasksServiceImpl : IUserTasksService
     public async Task CreateUserTask(UserTaskModel userTask)
     {
         var entity = userTask.ToEntity();
+        Console.WriteLine("Este es mi assigned to " + entity.AssignedTo);
         await _context.UserTasks.AddAsync(entity);
         await _context.SaveChangesAsync();
     }
@@ -46,6 +47,7 @@ public class UserTasksServiceImpl : IUserTasksService
             existingTask.Title = userTask.Title;
             existingTask.Description = userTask.Description;
             existingTask.Status = userTask.Status;
+            existingTask.AssignedTo = userTask.AssignedTo;
             existingTask.LastModifiedDateTime = userTask.LastModifiedDateTime;
 
             _context.UserTasks.Update(existingTask);

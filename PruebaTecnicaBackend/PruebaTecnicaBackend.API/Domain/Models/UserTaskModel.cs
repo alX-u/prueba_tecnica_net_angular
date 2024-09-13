@@ -12,16 +12,19 @@ public class UserTaskModel
 
     public UserTaskStatus Status { get; }
 
+    public Guid? AssignedTo { get; }
+
     public DateTime CreatedDateTime { get; }
 
     public DateTime LastModifiedDateTime { get; }
 
-    public UserTaskModel(Guid id, string title, string description, UserTaskStatus status, DateTime createdDateTime, DateTime lastModifiedDateTime)
+    public UserTaskModel(Guid id, string title, string description, UserTaskStatus status, Guid? assignedTo, DateTime createdDateTime, DateTime lastModifiedDateTime)
     {
         Id = id;
         Title = title;
         Description = description;
         Status = status;
+        AssignedTo = assignedTo ?? Guid.Empty;
         CreatedDateTime = createdDateTime;
         LastModifiedDateTime = lastModifiedDateTime;
     }

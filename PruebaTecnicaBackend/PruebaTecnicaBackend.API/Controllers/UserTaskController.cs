@@ -20,30 +20,32 @@ namespace PruebaTecnicaBackend.API.Controllers
         public async Task<IActionResult> CreateTask(CreateUserTaskRequest request)
         {
             //Map the request
-            var task = new UserTaskModel(
+            var userTask = new UserTaskModel(
                 Guid.NewGuid(),
                 request.Title,
                 request.Description,
                 request.Status,
+                request.AssignedTo,
                 DateTime.Now,
                 DateTime.Now
                );
 
             // Save the task to the database
-            await _userTasksService.CreateUserTask(task);
+            await _userTasksService.CreateUserTask(userTask);
 
             // Map the task to the response
             var response = new UserTaskResponse(
-                task.Id,
-                task.Title,
-                task.Description,
-                task.Status,
-                task.CreatedDateTime,
-                task.LastModifiedDateTime);
+                userTask.Id,
+                userTask.Title,
+                userTask.Description,
+                userTask.Status,
+                userTask.AssignedTo == Guid.Empty ? null : userTask.AssignedTo, // Show as null instead of empty guid
+                userTask.CreatedDateTime,
+                userTask.LastModifiedDateTime);
 
             return CreatedAtAction(
                 actionName: nameof(GetTask),
-                routeValues: new { id = task.Id },
+                routeValues: new { id = userTask.Id },
                 value: response
             );
         }
@@ -65,6 +67,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                 userTask.Title,
                 userTask.Description,
                 userTask.Status,
+                userTask.AssignedTo == Guid.Empty ? null : userTask.AssignedTo,
                 userTask.CreatedDateTime,
                 userTask.LastModifiedDateTime);
 
@@ -80,6 +83,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                 request.Title,
                 request.Description,
                 request.Status,
+                request.AssignedTo,
                 DateTime.Now, //This value is not modified
                 DateTime.Now
             );

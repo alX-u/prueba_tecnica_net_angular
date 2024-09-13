@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PruebaTecnicaBackend.API.Data.Entities
@@ -19,7 +17,9 @@ namespace PruebaTecnicaBackend.API.Data.Entities
 
         // Foreign Key for UserRole
         public Guid RoleId { get; set; }
-        public UserRoleEntity Role { get; set; }
+        public required UserRoleEntity Role { get; set; }
+
+        public DateTime CreatedDateTime { get; set; }
 
         // Collection of tasks assigned to the user
         public ICollection<UserTaskEntity> AssignedTasks { get; set; } = new List<UserTaskEntity>();

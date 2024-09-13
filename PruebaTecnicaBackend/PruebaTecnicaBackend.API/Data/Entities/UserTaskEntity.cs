@@ -8,11 +8,9 @@ public class UserTaskEntity
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public UserTaskStatus Status { get; set; }
+    public Guid? AssignedTo { get; set; }
+    public UserEntity? User { get; set; }
     public DateTime CreatedDateTime { get; set; }
     public DateTime LastModifiedDateTime { get; set; }
 
-    // Foreign Key
-    // Foreign Key
-    public Guid? UserId { get; set; }  // Hacerlo nullable
-    public UserEntity User { get; set; }
 }

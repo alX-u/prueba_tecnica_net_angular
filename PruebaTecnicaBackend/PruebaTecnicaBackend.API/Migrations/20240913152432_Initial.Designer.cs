@@ -12,7 +12,7 @@ using PruebaTecnicaBackend.API.Data;
 namespace PruebaTecnicaBackend.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240913064735_Initial")]
+    [Migration("20240913152432_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -30,6 +30,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -73,20 +76,20 @@ namespace PruebaTecnicaBackend.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ba25cf77-2fd5-4fa6-a183-b863a98c1052"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 6, 47, 35, 74, DateTimeKind.Utc).AddTicks(1156),
+                            Id = new Guid("ea0e85f4-1eb6-4616-9940-559adfe428e2"),
+                            CreatedDateTime = new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4777),
                             Name = "Supervisor"
                         },
                         new
                         {
-                            Id = new Guid("de5377c3-c83f-481f-b5e7-414a94e82c5e"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 6, 47, 35, 74, DateTimeKind.Utc).AddTicks(1158),
+                            Id = new Guid("8d326e35-8a37-44ad-86a8-ef2ebed5d233"),
+                            CreatedDateTime = new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4822),
                             Name = "Empleado"
                         },
                         new
                         {
-                            Id = new Guid("f0f89436-93ae-4071-b1c8-2a112e335683"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 6, 47, 35, 74, DateTimeKind.Utc).AddTicks(1170),
+                            Id = new Guid("93ea1de6-08d6-4531-8e84-df8532b89cf6"),
+                            CreatedDateTime = new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4824),
                             Name = "Administrador"
                         });
                 });
@@ -95,6 +98,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AssignedTo")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDateTime")
@@ -114,12 +120,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AssignedTo");
 
                     b.ToTable("UserTasks");
                 });
@@ -139,7 +142,7 @@ namespace PruebaTecnicaBackend.API.Migrations
                 {
                     b.HasOne("PruebaTecnicaBackend.API.Data.Entities.UserEntity", "User")
                         .WithMany("AssignedTasks")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("AssignedTo")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("User");
