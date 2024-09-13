@@ -12,7 +12,7 @@ using PruebaTecnicaBackend.API.Data;
 namespace PruebaTecnicaBackend.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240912222844_Initial")]
+    [Migration("20240913034857_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -31,17 +31,14 @@ namespace PruebaTecnicaBackend.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("LastModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StartDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")

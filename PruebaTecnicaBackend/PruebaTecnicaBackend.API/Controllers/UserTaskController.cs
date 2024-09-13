@@ -25,9 +25,9 @@ namespace PruebaTecnicaBackend.API.Controllers
                 request.Title,
                 request.Description,
                 request.Status,
-                request.StartDateTime,
-                request.EndDateTime,
-                DateTime.UtcNow);
+                DateTime.Now,
+                DateTime.Now
+               );
 
             // Save the task to the database
             await _userTasksService.CreateUserTask(task);
@@ -38,8 +38,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                 task.Title,
                 task.Description,
                 task.Status,
-                task.StartDateTime,
-                task.EndDateTime,
+                task.CreatedDateTime,
                 task.LastModifiedDateTime);
 
             return CreatedAtAction(
@@ -52,7 +51,13 @@ namespace PruebaTecnicaBackend.API.Controllers
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetTask(Guid id)
         {
-            UserTaskModel userTask = await _userTasksService.GetUserTaskById(id);
+            var userTask = await _userTasksService.GetUserTaskById(id);
+
+            // User is null
+            if (userTask == null)
+            {
+                return NotFound(new { Message = $"UserTask with ID {id} not found" });
+            }
 
             //Map the userTask to the response
             var response = new UserTaskResponse(
@@ -60,25 +65,50 @@ namespace PruebaTecnicaBackend.API.Controllers
                 userTask.Title,
                 userTask.Description,
                 userTask.Status,
-                userTask.StartDateTime,
-                userTask.EndDateTime,
+                userTask.CreatedDateTime,
                 userTask.LastModifiedDateTime);
 
             return Ok(response);
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpsertTask(Guid id, UpsertUserTaskRequest request)
+        public async Task<IActionResult> UpdateTask(Guid id, UpdateUserTaskRequest request)
         {
-            //TODO: implement upsert task service
-            return Ok();
+
+            var userTask = new UserTaskModel(
+                id,
+                request.Title,
+                request.Description,
+                request.Status,
+                DateTime.Now, //This value is not modified
+                DateTime.Now
+            );
+
+            bool userTaskUpdated = await _userTasksService.UpdateUserTask(userTask);
+
+            if (userTaskUpdated)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return NotFound(new { Message = $"UserTask with ID {id} not found" });
+            }
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteTask(Guid id)
         {
-            //TODO: implement delete task service
-            return Ok();
+            var existingTask = await _userTasksService.GetUserTaskById(id);
+
+            if (existingTask == null)
+            {
+                return NotFound(new { Message = $"UserTask with ID {id} not found" });
+            }
+
+            await _userTasksService.DeleteUserTask(id);
+
+            return NoContent();
         }
     }
 }

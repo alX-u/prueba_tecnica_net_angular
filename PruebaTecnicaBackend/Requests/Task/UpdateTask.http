@@ -1,0 +1,10 @@
+@id=B02F2873-811E-4A75-9BB3-1AE5B69F710C
+
+PUT http://localhost:5175/tasks/{{id}}
+Content-Type: application/json
+
+{
+    "title": "Tarea de Prueba 1",
+    "description": "Se realizó una modificación de esta tarea",
+    "status": 2
+}

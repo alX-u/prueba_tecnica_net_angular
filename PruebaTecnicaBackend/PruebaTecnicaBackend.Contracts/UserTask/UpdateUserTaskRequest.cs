@@ -1,10 +1,8 @@
 using PruebaTecnicaBackend.Contracts.Enums;
 namespace PruebaTecnicaBackend.Contracts.UserTask;
 
-public record UpsertUserTaskRequest(
+public record UpdateUserTaskRequest(
 string Title,
 string Description,
-UserTaskStatus Status,
-DateTime StartDateTime,
-DateTime EndDateTime
+UserTaskStatus Status
 );

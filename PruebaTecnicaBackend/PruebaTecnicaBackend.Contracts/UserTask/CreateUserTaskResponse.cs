@@ -6,8 +6,7 @@ Guid Id,
 string Title,
 string Description,
 UserTaskStatus Status,
-DateTime StartDateTime,
-DateTime EndDateTime,
+DateTime CreatedDateTime,
 DateTime LastModifiedDateTime
 );
 

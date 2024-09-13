@@ -1,3 +1,4 @@
+using PruebaTecnicaBackend.API.Data.Entities;
 using PruebaTecnicaBackend.Contracts.Enums;
 
 namespace PruebaTecnicaBackend.API.Domain.Models;
@@ -11,21 +12,17 @@ public class UserTaskModel
 
     public UserTaskStatus Status { get; }
 
-    public DateTime StartDateTime { get; }
-
-    public DateTime EndDateTime { get; }
+    public DateTime CreatedDateTime { get; }
 
     public DateTime LastModifiedDateTime { get; }
 
-    public UserTaskModel(Guid id, string title, string description, UserTaskStatus status, DateTime startDateTime, DateTime endDateTime, DateTime lastModifiedDateTime)
+    public UserTaskModel(Guid id, string title, string description, UserTaskStatus status, DateTime createdDateTime, DateTime lastModifiedDateTime)
     {
-        //Add wanted logic for each field
         Id = id;
         Title = title;
         Description = description;
         Status = status;
-        StartDateTime = startDateTime;
-        EndDateTime = endDateTime;
+        CreatedDateTime = createdDateTime;
         LastModifiedDateTime = lastModifiedDateTime;
     }
 
