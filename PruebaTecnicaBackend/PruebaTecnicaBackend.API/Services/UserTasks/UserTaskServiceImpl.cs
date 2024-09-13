@@ -1,23 +1,18 @@
+using Microsoft.EntityFrameworkCore;
 using PruebaTecnicaBackend.API.Data;
 using PruebaTecnicaBackend.API.Data.Entities;
 using PruebaTecnicaBackend.API.Domain.Models;
 
-namespace PruebaTecnicaBackend.API.Services.UserTasks;
+namespace PruebaTecnicaBackend.API.Services;
 
-public class UserTasksServiceImpl : IUserTasksService
+public class UserTasksServiceImpl(DataContext context) : IUserTasksService
 {
 
-    private readonly DataContext _context;
-
-    public UserTasksServiceImpl(DataContext context)
-    {
-        _context = context;
-    }
+    private readonly DataContext _context = context;
 
     public async Task CreateUserTask(UserTaskModel userTask)
     {
         var entity = userTask.ToEntity();
-        Console.WriteLine("Este es mi assigned to " + entity.AssignedTo);
         await _context.UserTasks.AddAsync(entity);
         await _context.SaveChangesAsync();
     }
@@ -30,6 +25,13 @@ public class UserTasksServiceImpl : IUserTasksService
             _context.UserTasks.Remove(task);
             await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task<List<UserTaskModel>> GetTasks()
+    {
+        var taskEntities = await _context.UserTasks.ToListAsync();
+
+        return taskEntities.Select(taskEntity => taskEntity.ToModel()).ToList();
     }
 
     public async Task<UserTaskModel?> GetUserTaskById(Guid id)

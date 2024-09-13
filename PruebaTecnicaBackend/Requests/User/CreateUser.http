@@ -1,0 +1,9 @@
+POST http://localhost:5175/users
+Content-Type: application/json
+
+{
+    "name": "Mi usuario",
+    "email": "user@gmail.com",
+    "passwordHash": "123hola123",
+    "roleId": "05DF3BF5-873F-41A6-82C7-942B427EA502"
+}

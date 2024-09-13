@@ -1,20 +1,15 @@
 using PruebaTecnicaBackend.Contracts.UserTask;
 using PruebaTecnicaBackend.API.Domain.Models;
-using PruebaTecnicaBackend.API.Services.UserTasks;
 using Microsoft.AspNetCore.Mvc;
+using PruebaTecnicaBackend.API.Services;
 
 namespace PruebaTecnicaBackend.API.Controllers
 {
     [ApiController]
     [Route("tasks")]
-    public class UserTaskController : ControllerBase
+    public class UserTaskController(IUserTasksService userTasksService) : ControllerBase
     {
-        private readonly IUserTasksService _userTasksService;
-
-        public UserTaskController(IUserTasksService userTasksService)
-        {
-            _userTasksService = userTasksService;
-        }
+        private readonly IUserTasksService _userTasksService = userTasksService;
 
         [HttpPost("")]
         public async Task<IActionResult> CreateTask(CreateUserTaskRequest request)
@@ -50,18 +45,47 @@ namespace PruebaTecnicaBackend.API.Controllers
             );
         }
 
+        [HttpGet("")]
+        public async Task<IActionResult> GetTasks()
+        {
+            try
+            {
+                var tasks = await _userTasksService.GetTasks();
+
+                if (tasks == null || tasks.Count == 0)
+                {
+                    return NotFound("No tasks found.");
+                }
+
+                var response = tasks.Select(task => new UserTaskResponse(
+                    task.Id,
+                    task.Title,
+                    task.Description,
+                    task.Status,
+                    task.AssignedTo == Guid.Empty ? null : task.AssignedTo,
+                    task.CreatedDateTime,
+                    task.LastModifiedDateTime
+                )).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error retrieving tasks: {ex.Message}");
+            }
+        }
+
+
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetTask(Guid id)
         {
             var userTask = await _userTasksService.GetUserTaskById(id);
 
-            // User is null
             if (userTask == null)
             {
                 return NotFound(new { Message = $"UserTask with ID {id} not found" });
             }
 
-            //Map the userTask to the response
             var response = new UserTaskResponse(
                 userTask.Id,
                 userTask.Title,

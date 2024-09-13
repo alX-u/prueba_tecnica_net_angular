@@ -16,10 +16,14 @@ namespace PruebaTecnicaBackend.API.Data.Entities
         public string PasswordHash { get; set; } = string.Empty;
 
         // Foreign Key for UserRole
+        [Required]
         public Guid RoleId { get; set; }
-        public required UserRoleEntity Role { get; set; }
+        [Required]
+        public UserRoleEntity Role { get; set; } = null!;
 
         public DateTime CreatedDateTime { get; set; }
+
+        public DateTime LastModifiedDateTime { get; set; }
 
         // Collection of tasks assigned to the user
         public ICollection<UserTaskEntity> AssignedTasks { get; set; } = new List<UserTaskEntity>();

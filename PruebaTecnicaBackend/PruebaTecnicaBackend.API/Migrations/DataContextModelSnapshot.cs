@@ -35,6 +35,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("LastModifiedDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -73,20 +76,20 @@ namespace PruebaTecnicaBackend.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ea0e85f4-1eb6-4616-9940-559adfe428e2"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4777),
+                            Id = new Guid("9f6025da-6072-41dd-b335-3e4cd4109534"),
+                            CreatedDateTime = new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6804),
                             Name = "Supervisor"
                         },
                         new
                         {
-                            Id = new Guid("8d326e35-8a37-44ad-86a8-ef2ebed5d233"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4822),
+                            Id = new Guid("05df3bf5-873f-41a6-82c7-942b427ea502"),
+                            CreatedDateTime = new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6807),
                             Name = "Empleado"
                         },
                         new
                         {
-                            Id = new Guid("93ea1de6-08d6-4531-8e84-df8532b89cf6"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4824),
+                            Id = new Guid("088e7174-6cad-49c1-b67e-513623d41edb"),
+                            CreatedDateTime = new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6822),
                             Name = "Administrador"
                         });
                 });

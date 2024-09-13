@@ -7,6 +7,7 @@ public record UserResponse(
     string Email,
     string PasswordHash,
     Guid RoleId,
-    DateTime CreatedDateTime
+    DateTime CreatedDateTime,
+    DateTime LastModifiedDateTime
 );
 

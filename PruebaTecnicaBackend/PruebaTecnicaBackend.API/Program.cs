@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PruebaTecnicaBackend.API.Data;
-using PruebaTecnicaBackend.API.Services.UserTasks;
+using PruebaTecnicaBackend.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
+    builder.Services.AddScoped<IUserRoleService, UserRoleServiceImpl>();
+    builder.Services.AddScoped<IUserService, UserServiceImpl>();
     builder.Services.AddScoped<IUserTasksService, UserTasksServiceImpl>();
 }
 

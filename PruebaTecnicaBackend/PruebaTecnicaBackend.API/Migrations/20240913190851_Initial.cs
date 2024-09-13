@@ -35,7 +35,8 @@ namespace PruebaTecnicaBackend.API.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,9 +77,9 @@ namespace PruebaTecnicaBackend.API.Migrations
                 columns: new[] { "Id", "CreatedDateTime", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("8d326e35-8a37-44ad-86a8-ef2ebed5d233"), new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4822), "Empleado" },
-                    { new Guid("93ea1de6-08d6-4531-8e84-df8532b89cf6"), new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4824), "Administrador" },
-                    { new Guid("ea0e85f4-1eb6-4616-9940-559adfe428e2"), new DateTime(2024, 9, 13, 15, 24, 32, 139, DateTimeKind.Utc).AddTicks(4777), "Supervisor" }
+                    { new Guid("05df3bf5-873f-41a6-82c7-942b427ea502"), new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6807), "Empleado" },
+                    { new Guid("088e7174-6cad-49c1-b67e-513623d41edb"), new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6822), "Administrador" },
+                    { new Guid("9f6025da-6072-41dd-b335-3e4cd4109534"), new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6804), "Supervisor" }
                 });
 
             migrationBuilder.CreateIndex(

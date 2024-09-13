@@ -1,0 +1,3 @@
+@id=04eca5dd-a69b-4867-9f5d-5aab3197395d
+
+DELETE http://localhost:5175/users/{{id}}

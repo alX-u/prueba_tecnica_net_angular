@@ -1,11 +1,11 @@
-@id=B6BA1895-783F-4C5B-851E-C962FF633A01
+@id=FFED4082-FAA6-4763-BF18-498555BE46CB
 
 PUT http://localhost:5175/tasks/{{id}}
 Content-Type: application/json
 
 {
-    "title": "Tarea de Prueba 1",
+    "title": "Tarea de El otro 1",
     "description": "Se realizó una modificación de esta tarea",
-    "status": 2,
-    "assignedTo": "55341858-342B-4D00-8F46-1194E26CC9CF"
+    "status": 1,
+    "assignedTo": "04ECA5DD-A69B-4867-9F5D-5AAB3197395D"
 }

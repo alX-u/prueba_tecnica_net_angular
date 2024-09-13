@@ -3,30 +3,25 @@ using PruebaTecnicaBackend.Contracts.Enums;
 
 namespace PruebaTecnicaBackend.API.Domain.Models;
 
-public class UserTaskModel
+public class UserTaskModel(
+    Guid id,
+    string title,
+    string description,
+    UserTaskStatus status,
+    Guid? assignedTo,
+    DateTime createdDateTime,
+    DateTime lastModifiedDateTime)
 {
-    public Guid Id { get; }
-    public string Title { get; }
+    public Guid Id { get; } = id;
+    public string Title { get; } = title;
 
-    public string Description { get; }
+    public string Description { get; } = description;
 
-    public UserTaskStatus Status { get; }
+    public UserTaskStatus Status { get; } = status;
 
-    public Guid? AssignedTo { get; }
+    public Guid? AssignedTo { get; } = assignedTo ?? Guid.Empty;
 
-    public DateTime CreatedDateTime { get; }
+    public DateTime CreatedDateTime { get; } = createdDateTime;
 
-    public DateTime LastModifiedDateTime { get; }
-
-    public UserTaskModel(Guid id, string title, string description, UserTaskStatus status, Guid? assignedTo, DateTime createdDateTime, DateTime lastModifiedDateTime)
-    {
-        Id = id;
-        Title = title;
-        Description = description;
-        Status = status;
-        AssignedTo = assignedTo ?? Guid.Empty;
-        CreatedDateTime = createdDateTime;
-        LastModifiedDateTime = lastModifiedDateTime;
-    }
-
+    public DateTime LastModifiedDateTime { get; } = lastModifiedDateTime;
 }
