@@ -43,11 +43,14 @@ public class AuthServiceImpl(IConfiguration config, DataContext context) : IAuth
     public async Task<UserModel?> ValidateUser(string email, string password)
     {
         var user = await _context.Users
-                    .Include(u => u.Role)
-                    .FirstOrDefaultAsync(u => u.Email == email && u.PasswordHash == password);
+                .Include(u => u.Role)
+                .FirstOrDefaultAsync(u => u.Email == email);
 
-        Console.WriteLine("Este es el usuario: " + user);
+        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+        {
+            return null;
+        }
 
-        return user?.ToModel();
+        return user.ToModel();
     }
 }

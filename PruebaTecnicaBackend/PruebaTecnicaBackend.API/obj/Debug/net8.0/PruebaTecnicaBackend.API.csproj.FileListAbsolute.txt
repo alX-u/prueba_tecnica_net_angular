@@ -133,3 +133,4 @@ C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTe
 C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.API\obj\Debug\net8.0\PruebaTecnicaBackend.API.genruntimeconfig.cache
 C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.API\obj\Debug\net8.0\ref\PruebaTecnicaBackend.API.dll
 C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\vvill\OneDrive\Documentos\Proyectos\prueba_tecnica_net_angular\PruebaTecnicaBackend\PruebaTecnicaBackend.API\bin\Debug\net8.0\BCrypt.Net-Next.dll

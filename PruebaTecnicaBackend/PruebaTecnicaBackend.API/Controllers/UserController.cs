@@ -18,11 +18,14 @@ namespace PruebaTecnicaBackend.API.Controllers
         {
             try
             {
+                //Hash user password
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.PasswordHash);
+
                 var user = new UserModel(
                     Guid.NewGuid(),
                     request.Name,
                     request.Email,
-                    request.PasswordHash,
+                    hashedPassword,
                     request.RoleId,
                     DateTime.Now,
                     DateTime.Now);
@@ -33,7 +36,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     user.Id,
                     user.Name,
                     user.Email,
-                    user.PasswordHash,
+                    hashedPassword,
                     user.RoleId,
                     user.CreatedDateTime,
                     user.LastModifiedDateTime);

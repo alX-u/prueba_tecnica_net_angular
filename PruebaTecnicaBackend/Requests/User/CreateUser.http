@@ -2,8 +2,8 @@ POST http://localhost:5175/users
 Content-Type: application/json
 
 {
-    "name": "Me van a borrar",
-    "email": "borrado@gmail.com",
-    "passwordHash": "adios123",
-    "roleId": "9F6025DA-6072-41DD-B335-3E4CD4109534"
+    "name": "Ana De Armas",
+    "email": "anadearmas@gmail.com",
+    "passwordHash": "anadearmas123",
+    "roleId": "05DF3BF5-873F-41A6-82C7-942B427EA502"
 }
