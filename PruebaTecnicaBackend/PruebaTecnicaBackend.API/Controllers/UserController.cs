@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaBackend.API.Domain.Models;
 using PruebaTecnicaBackend.API.Services;
@@ -48,14 +49,13 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("")]
         public async Task<IActionResult> GetUsers()
         {
             try
             {
-
                 var users = await _userService.GetUsers();
-
 
                 if (users == null || users.Count == 0)
                 {
@@ -80,7 +80,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Administrador, Supervisor")]
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
@@ -110,6 +110,38 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador, Supervisor")]
+        [HttpGet("employees")]
+        public async Task<IActionResult> GetEmployees()
+        {
+            try
+            {
+                var employees = await _userService.GetEmployees();
+
+                if (employees == null || employees.Count == 0)
+                {
+                    return NotFound("No employees found.");
+                }
+
+                var response = employees.Select(user => new UserResponse(
+                    user.Id,
+                    user.Name,
+                    user.Email,
+                    user.PasswordHash,
+                    user.RoleId,
+                    user.CreatedDateTime,
+                    user.LastModifiedDateTime
+                )).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error retrieving employees: {ex.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Administrador, Supervisor, Empleado")]
         [HttpGet("{id:guid}/tasks")]
         public async Task<IActionResult> GetUserTasks(Guid id)
         {
@@ -141,7 +173,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateUser(Guid id, UpdateUserRequest request)
         {
@@ -171,6 +203,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {

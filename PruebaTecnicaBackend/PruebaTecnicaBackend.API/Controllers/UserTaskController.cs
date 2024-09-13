@@ -2,6 +2,7 @@ using PruebaTecnicaBackend.Contracts.UserTask;
 using PruebaTecnicaBackend.API.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaBackend.API.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PruebaTecnicaBackend.API.Controllers
 {
@@ -11,6 +12,7 @@ namespace PruebaTecnicaBackend.API.Controllers
     {
         private readonly IUserTasksService _userTasksService = userTasksService;
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost("")]
         public async Task<IActionResult> CreateTask(CreateUserTaskRequest request)
         {
@@ -45,6 +47,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             );
         }
 
+        [Authorize(Roles = "Administrador, Supervisor")]
         [HttpGet("")]
         public async Task<IActionResult> GetTasks()
         {
@@ -75,7 +78,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Administrador, Supervisor")]
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetTask(Guid id)
         {
@@ -98,6 +101,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Administrador, Supervisor, Empleado")]
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateTask(Guid id, UpdateUserTaskRequest request)
         {
@@ -124,6 +128,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteTask(Guid id)
         {

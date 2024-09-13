@@ -36,6 +36,23 @@ public class UserServiceImpl(DataContext context) : IUserService
         return userEntity?.ToModel();
     }
 
+    public async Task<List<UserModel>> GetEmployees()
+    {
+        var role = await _context.UserRoles
+            .FirstOrDefaultAsync(r => r.Name == "Empleado");
+
+        if (role == null)
+        {
+            return [];
+        }
+
+        var users = await _context.Users
+            .Where(u => u.RoleId == role.Id)
+            .ToListAsync();
+
+        return users.Select(user => user.ToModel()).ToList();
+    }
+
     public async Task<List<UserTaskModel>?> GetUserTasks(Guid userId)
     {
         var userTasksEntities = await _context.UserTasks

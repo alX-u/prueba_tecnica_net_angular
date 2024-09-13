@@ -11,6 +11,8 @@ namespace PruebaTecnicaBackend.API.Services
 
         Task<UserModel?> GetUserById(Guid id);
 
+        Task<List<UserModel>> GetEmployees();
+
         Task<List<UserTaskModel>?> GetUserTasks(Guid id);
 
         Task<bool> UpdateUser(UserModel userModel);

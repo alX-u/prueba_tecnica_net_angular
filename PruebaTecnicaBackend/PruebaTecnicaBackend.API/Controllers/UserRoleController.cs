@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaBackend.API.Services;
 
@@ -10,6 +11,7 @@ namespace PruebaTecnicaBackend.API.Controllers
 
         private readonly IUserRoleService _userRoleService = userRoleService;
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("")]
         public async Task<IActionResult> GetRoles()
         {
