@@ -33,7 +33,7 @@ namespace PruebaTecnicaBackend.API.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -77,10 +77,10 @@ namespace PruebaTecnicaBackend.API.Migrations
                 columns: new[] { "Id", "CreatedDateTime", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("21d6bfeb-676f-4582-a11c-a8b265d3c0d2"), new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4582), "Empleado" },
-                    { new Guid("6ba2d67b-8e13-48c3-9386-43e3d4bc22e7"), new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4583), "Administrador" },
-                    { new Guid("bf246c83-ccab-4151-9760-c86a3f1ea971"), new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4578), "Sin rol" },
-                    { new Guid("f266e609-aa2d-48db-ac2b-e79a8e96a6ea"), new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4581), "Supervisor" }
+                    { new Guid("41af8624-e1cb-49f3-90b7-4dc79f20cbff"), new DateTime(2024, 9, 15, 19, 26, 50, 271, DateTimeKind.Utc).AddTicks(3513), "Empleado" },
+                    { new Guid("7f1b7f09-ff9e-4639-9d32-bff802063f9a"), new DateTime(2024, 9, 15, 19, 26, 50, 271, DateTimeKind.Utc).AddTicks(3508), "Sin rol" },
+                    { new Guid("b4587c4b-22f8-4425-ad10-1ac455b3303e"), new DateTime(2024, 9, 15, 19, 26, 50, 271, DateTimeKind.Utc).AddTicks(3515), "Administrador" },
+                    { new Guid("d999ea19-9854-48a5-8f9b-269b77a56241"), new DateTime(2024, 9, 15, 19, 26, 50, 271, DateTimeKind.Utc).AddTicks(3512), "Supervisor" }
                 });
 
             migrationBuilder.CreateIndex(

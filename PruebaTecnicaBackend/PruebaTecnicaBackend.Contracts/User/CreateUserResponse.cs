@@ -5,7 +5,7 @@ public record UserResponse(
     Guid Id,
     string Name,
     string Email,
-    string PasswordHash,
+    string Password,
     Guid RoleId,
     DateTime CreatedDateTime,
     DateTime LastModifiedDateTime

@@ -46,7 +46,7 @@ public class AuthServiceImpl(IConfiguration config, DataContext context) : IAuth
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Email == email);
 
-        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
         {
             return null;
         }

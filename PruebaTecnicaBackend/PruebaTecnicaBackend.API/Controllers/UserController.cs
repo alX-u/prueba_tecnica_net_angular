@@ -22,7 +22,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                 var roleId = request.RoleId ?? await _userService.GetRoleForBrandNewUser();
 
                 //Hash user password
-                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.PasswordHash);
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
                 var user = new UserModel(
                     Guid.NewGuid(),
@@ -72,7 +72,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     user.Id,
                     user.Name,
                     user.Email,
-                    user.PasswordHash,
+                    user.Password,
                     user.RoleId,
                     user.CreatedDateTime,
                     user.LastModifiedDateTime
@@ -103,7 +103,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     user.Id,
                     user.Name,
                     user.Email,
-                    user.PasswordHash,
+                    user.Password,
                     user.RoleId,
                     user.CreatedDateTime,
                     user.LastModifiedDateTime);
@@ -133,7 +133,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     user.Id,
                     user.Name,
                     user.Email,
-                    user.PasswordHash,
+                    user.Password,
                     user.RoleId,
                     user.CreatedDateTime,
                     user.LastModifiedDateTime
@@ -189,7 +189,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     id,
                     request.Name,
                     request.Email,
-                    request.PasswordHash,
+                    request.Password,
                     request.RoleId,
                     DateTime.Now, // Value won't change
                     DateTime.Now);

@@ -11,7 +11,7 @@ public static class UserMapper
             Id = model.Id,
             Name = model.Name,
             Email = model.Email,
-            PasswordHash = model.PasswordHash,
+            Password = model.Password,
             RoleId = model.RoleId,
             CreatedDateTime = model.CreatedDateTime,
             LastModifiedDateTime = model.LastModifiedDateTime
@@ -24,7 +24,7 @@ public static class UserMapper
             entity.Id,
             entity.Name,
             entity.Email,
-            entity.PasswordHash,
+            entity.Password,
             entity.RoleId,
             entity.CreatedDateTime,
             entity.LastModifiedDateTime

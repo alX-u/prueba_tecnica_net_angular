@@ -15,6 +15,8 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @Component({
   selector: 'app-login-page',
@@ -29,53 +31,10 @@ import { CommonModule } from '@angular/common';
     MatCheckboxModule,
     MatButtonModule,
     ReactiveFormsModule,
+    LoginFormComponent,
+    RegisterFormComponent,
   ],
   templateUrl: './authentication-page.component.html',
   styleUrl: './authentication-page.component.css',
 })
-export class AuthenticationPageComponent {
-  // Login form
-  loginForm = new FormGroup({
-    emailLogin: new FormControl('', [Validators.required, Validators.email]),
-    passwordLogin: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
-  });
-
-  // Register form
-  registerForm = new FormGroup({
-    fullNameRegister: new FormControl('', Validators.required),
-    emailRegister: new FormControl('', [Validators.required, Validators.email]),
-    passwordRegister: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
-    confirmPasswordRegister: new FormControl('', [
-      Validators.required,
-      this.confirmPasswordValidator.bind(this),
-    ]),
-  });
-
-  // Password match validator for register form
-  confirmPasswordValidator(
-    control: AbstractControl
-  ): { [key: string]: boolean } | null {
-    const form = control.parent as FormGroup;
-    if (!form) {
-      return null;
-    }
-    const password = form.get('passwordRegister')?.value;
-    const confirmPassword = control.value;
-    return password === confirmPassword ? null : { passwordMismatch: true };
-  }
-
-  onLoginSubmit() {
-    console.log(this.loginForm.value);
-  }
-
-  onRegisterSubmit() {
-    console.log(this.registerForm.errors); // Verifica si el error de validación está presente
-    console.log(this.registerForm.value);
-  }
-}
+export class AuthenticationPageComponent {}

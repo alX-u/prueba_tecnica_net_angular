@@ -6,7 +6,7 @@ public class UserModel(
     Guid id,
     string name,
     string email,
-    string passwordHash,
+    string password,
     Guid roleId,
     DateTime createdDateTime,
     DateTime lastModifiedDateTime)
@@ -16,7 +16,7 @@ public class UserModel(
 
     public string Email { get; } = email;
 
-    public string PasswordHash { get; } = passwordHash;
+    public string Password { get; } = password;
 
     public Guid RoleId { get; } = roleId;
 
