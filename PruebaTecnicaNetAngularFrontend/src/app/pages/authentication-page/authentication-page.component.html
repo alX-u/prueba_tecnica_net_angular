@@ -4,20 +4,18 @@
     <mat-tab-group mat-stretch-tabs class="login-tab-group">
       <mat-tab label="Inicio de Sesión">
         <mat-card-content>
-          <form (ngSubmit)="onLoginSubmit(loginForm)" #loginForm="ngForm">
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input
-                matInput
-                required
-                name="emailLogin"
-                ngModel
-                [(ngModel)]="emailLogin"
-                #emailLogin="ngModel"
-              />
-              <mat-error *ngIf="emailLogin.invalid"
-                >Ingrese un correo, por favor</mat-error
+              <input matInput id="emailLogin" formControlName="emailLogin" />
+              <mat-error
+                *ngIf="loginForm.get('emailLogin')!.hasError('required')"
               >
+                Ingrese un correo, por favor
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('emailLogin')!.hasError('email')">
+                Ingrese un correo válido
+              </mat-error>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
@@ -25,16 +23,19 @@
               <input
                 matInput
                 type="password"
-                required
-                minlength="6"
-                name="passwordLogin"
-                ngModel
-                [(ngModel)]="passwordLogin"
-                #passwordLogin="ngModel"
+                id="passwordLogin"
+                formControlName="passwordLogin"
               />
-              <mat-error *ngIf="passwordLogin.invalid"
-                >Ingrese la contraseña, por favor</mat-error
+              <mat-error
+                *ngIf="loginForm.get('passwordLogin')!.hasError('required')"
               >
+                Ingrese la contraseña, por favor
+              </mat-error>
+              <mat-error
+                *ngIf="loginForm.get('passwordLogin')!.hasError('minlength')"
+              >
+                La contraseña debe tener al menos 6 caracteres
+              </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
             <button
@@ -50,38 +51,40 @@
       </mat-tab>
       <mat-tab label="Registro">
         <mat-card-content>
-          <form
-            (ngSubmit)="onRegisterSubmit(registerForm)"
-            #registerForm="ngForm"
-          >
+          <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
             <mat-form-field appearance="outline">
               <mat-label>Nombre Completo</mat-label>
               <input
                 matInput
-                required
-                name="fullname"
-                ngModel
-                [(ngModel)]="fullNameRegister"
-                #fullname="ngModel"
+                id="fullnameRegister"
+                formControlName="fullNameRegister"
               />
-              <mat-error *ngIf="fullname.invalid"
-                >Ingrese su nombre, por favor</mat-error
+              <mat-error
+                *ngIf="
+                  registerForm.get('fullNameRegister')!.hasError('required')
+                "
               >
+                Ingrese su nombre, por favor
+              </mat-error>
               <mat-icon matSuffix>perm_identity</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
               <input
                 matInput
-                required
-                name="emailRegister"
-                ngModel
-                [(ngModel)]="emailRegister"
-                #emailRegister="ngModel"
+                id="emailRegister"
+                formControlName="emailRegister"
               />
-              <mat-error *ngIf="emailRegister.invalid"
-                >El correo es requerido</mat-error
+              <mat-error
+                *ngIf="registerForm.get('emailRegister')!.hasError('required')"
               >
+                El correo es requerido
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.get('emailRegister')!.hasError('email')"
+              >
+                Ingrese un correo válido
+              </mat-error>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
@@ -89,16 +92,23 @@
               <input
                 matInput
                 type="password"
-                required
-                minlength="6"
-                name="passwordRegister"
-                ngModel
-                [(ngModel)]="passwordRegister"
-                #passwordRegister="ngModel"
+                id="passwordRegister"
+                formControlName="passwordRegister"
               />
-              <mat-error *ngIf="passwordRegister.invalid"
-                >La contraseña es requerida</mat-error
+              <mat-error
+                *ngIf="
+                  registerForm.get('passwordRegister')!.hasError('required')
+                "
               >
+                La contraseña es requerida
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  registerForm.get('passwordRegister')!.hasError('minlength')
+                "
+              >
+                La contraseña debe tener al menos 6 caracteres
+              </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline">
@@ -106,14 +116,25 @@
               <input
                 matInput
                 type="password"
-                required
-                minlength="6"
-                name="confirmPasswordRegister"
-                ngModel
-                [(ngModel)]="confirmPasswordRegister"
-                #confirmPasswordRegister="ngModel"
+                id="confirmPasswordRegister"
+                formControlName="confirmPasswordRegister"
               />
-              <mat-error *ngIf="confirmPasswordRegister.invalid">
+              <mat-error
+                *ngIf="
+                  registerForm
+                    .get('confirmPasswordRegister')!
+                    .hasError('required')
+                "
+              >
+                Es necesario confirmar la contraseña
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  registerForm
+                    .get('confirmPasswordRegister')!
+                    .hasError('passwordMismatch')
+                "
+              >
                 La contraseña no coincide
               </mat-error>
               <mat-icon matSuffix>lock</mat-icon>
