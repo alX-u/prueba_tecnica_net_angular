@@ -1,0 +1,134 @@
+<div class="login-page">
+  <mat-card class="login-card mat-elevation-z12">
+    <mat-card-title>BIENVENIDO</mat-card-title>
+    <mat-tab-group mat-stretch-tabs class="login-tab-group">
+      <mat-tab label="Inicio de Sesión">
+        <mat-card-content>
+          <form (ngSubmit)="onLoginSubmit(loginForm)" #loginForm="ngForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                required
+                name="emailLogin"
+                ngModel
+                [(ngModel)]="emailLogin"
+                #emailLogin="ngModel"
+              />
+              <mat-error *ngIf="emailLogin.invalid"
+                >Ingrese un correo, por favor</mat-error
+              >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                type="password"
+                required
+                minlength="6"
+                name="passwordLogin"
+                ngModel
+                [(ngModel)]="passwordLogin"
+                #passwordLogin="ngModel"
+              />
+              <mat-error *ngIf="passwordLogin.invalid"
+                >Ingrese la contraseña, por favor</mat-error
+              >
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              class="login-button"
+              type="submit"
+            >
+              Iniciar Sesión
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+      <mat-tab label="Registro">
+        <mat-card-content>
+          <form
+            (ngSubmit)="onRegisterSubmit(registerForm)"
+            #registerForm="ngForm"
+          >
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre Completo</mat-label>
+              <input
+                matInput
+                required
+                name="fullname"
+                ngModel
+                [(ngModel)]="fullNameRegister"
+                #fullname="ngModel"
+              />
+              <mat-error *ngIf="fullname.invalid"
+                >Ingrese su nombre, por favor</mat-error
+              >
+              <mat-icon matSuffix>perm_identity</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                required
+                name="emailRegister"
+                ngModel
+                [(ngModel)]="emailRegister"
+                #emailRegister="ngModel"
+              />
+              <mat-error *ngIf="emailRegister.invalid"
+                >El correo es requerido</mat-error
+              >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                type="password"
+                required
+                minlength="6"
+                name="passwordRegister"
+                ngModel
+                [(ngModel)]="passwordRegister"
+                #passwordRegister="ngModel"
+              />
+              <mat-error *ngIf="passwordRegister.invalid"
+                >La contraseña es requerida</mat-error
+              >
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Confirme su Contraseña</mat-label>
+              <input
+                matInput
+                type="password"
+                required
+                minlength="6"
+                name="confirmPasswordRegister"
+                ngModel
+                [(ngModel)]="confirmPasswordRegister"
+                #confirmPasswordRegister="ngModel"
+              />
+              <mat-error *ngIf="confirmPasswordRegister.invalid">
+                La contraseña no coincide
+              </mat-error>
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              class="login-button"
+              type="submit"
+            >
+              Registrarse
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

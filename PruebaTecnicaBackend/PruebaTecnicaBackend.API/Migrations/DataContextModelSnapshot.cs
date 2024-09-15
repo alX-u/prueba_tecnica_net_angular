@@ -76,20 +76,26 @@ namespace PruebaTecnicaBackend.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9f6025da-6072-41dd-b335-3e4cd4109534"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6804),
+                            Id = new Guid("bf246c83-ccab-4151-9760-c86a3f1ea971"),
+                            CreatedDateTime = new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4578),
+                            Name = "Sin rol"
+                        },
+                        new
+                        {
+                            Id = new Guid("f266e609-aa2d-48db-ac2b-e79a8e96a6ea"),
+                            CreatedDateTime = new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4581),
                             Name = "Supervisor"
                         },
                         new
                         {
-                            Id = new Guid("05df3bf5-873f-41a6-82c7-942b427ea502"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6807),
+                            Id = new Guid("21d6bfeb-676f-4582-a11c-a8b265d3c0d2"),
+                            CreatedDateTime = new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4582),
                             Name = "Empleado"
                         },
                         new
                         {
-                            Id = new Guid("088e7174-6cad-49c1-b67e-513623d41edb"),
-                            CreatedDateTime = new DateTime(2024, 9, 13, 19, 8, 51, 376, DateTimeKind.Utc).AddTicks(6822),
+                            Id = new Guid("6ba2d67b-8e13-48c3-9386-43e3d4bc22e7"),
+                            CreatedDateTime = new DateTime(2024, 9, 15, 5, 14, 1, 93, DateTimeKind.Utc).AddTicks(4583),
                             Name = "Administrador"
                         });
                 });

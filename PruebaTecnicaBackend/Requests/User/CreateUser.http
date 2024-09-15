@@ -4,6 +4,5 @@ Content-Type: application/json
 {
     "name": "Ana De Armas",
     "email": "anadearmas@gmail.com",
-    "passwordHash": "anadearmas123",
-    "roleId": "05DF3BF5-873F-41A6-82C7-942B427EA502"
+    "passwordHash": "anadearmas123"
 }

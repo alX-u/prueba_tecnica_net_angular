@@ -53,6 +53,19 @@ public class UserServiceImpl(DataContext context) : IUserService
         return users.Select(user => user.ToModel()).ToList();
     }
 
+    public async Task<Guid> GetRoleForBrandNewUser()
+    {
+        var role = await _context.UserRoles
+            .FirstOrDefaultAsync(r => r.Name == "Sin Rol");
+
+        if (role == null)
+        {
+            return Guid.Empty;
+        }
+
+        return role.Id;
+    }
+
     public async Task<List<UserTaskModel>?> GetUserTasks(Guid userId)
     {
         var userTasksEntities = await _context.UserTasks

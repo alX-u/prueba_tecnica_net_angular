@@ -36,6 +36,12 @@ namespace PruebaTecnicaBackend.API.Data
                 new UserRoleEntity
                 {
                     Id = Guid.NewGuid(),
+                    Name = "Sin rol",
+                    CreatedDateTime = DateTime.UtcNow
+                },
+                new UserRoleEntity
+                {
+                    Id = Guid.NewGuid(),
                     Name = "Supervisor",
                     CreatedDateTime = DateTime.UtcNow
                 },

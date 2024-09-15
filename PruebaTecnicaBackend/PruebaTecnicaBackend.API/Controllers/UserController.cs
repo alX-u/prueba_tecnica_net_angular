@@ -18,6 +18,9 @@ namespace PruebaTecnicaBackend.API.Controllers
         {
             try
             {
+                //For brand new users set as No Role
+                var roleId = request.RoleId ?? await _userService.GetRoleForBrandNewUser();
+
                 //Hash user password
                 var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.PasswordHash);
 
@@ -26,7 +29,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     request.Name,
                     request.Email,
                     hashedPassword,
-                    request.RoleId,
+                    roleId,
                     DateTime.Now,
                     DateTime.Now);
 
@@ -37,7 +40,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     user.Name,
                     user.Email,
                     hashedPassword,
-                    user.RoleId,
+                    roleId,
                     user.CreatedDateTime,
                     user.LastModifiedDateTime);
 
