@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
+import { LoginUseCase } from '../../../../domain/usecases/auth/login.usecase';
+import { LoginRequest } from '../../../../domain/models/requests/auth/login.request';
 
 @Component({
   selector: 'authentication-page-login-form',
@@ -32,6 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
   styleUrl: './login-form.component.css',
 })
 export class LoginFormComponent {
+  constructor(private loginUseCase: LoginUseCase) {}
+
   // Login form
   loginForm = new FormGroup({
     emailLogin: new FormControl('', [Validators.required, Validators.email]),
@@ -42,6 +46,20 @@ export class LoginFormComponent {
   });
 
   onLoginSubmit() {
-    console.log(this.loginForm.value);
+    const formAnswers = this.loginForm.value;
+
+    const loginRequest: LoginRequest = {
+      email: formAnswers.emailLogin ?? '',
+      password: formAnswers.passwordLogin ?? '',
+    };
+
+    this.loginUseCase.execute(loginRequest).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }

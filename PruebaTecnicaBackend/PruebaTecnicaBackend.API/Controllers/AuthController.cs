@@ -15,7 +15,7 @@ namespace PruebaTecnicaBackend.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginWithEmailAndPassword(AuthRequest request)
         {
-            var user = await _authService.ValidateUser(request.Email, request.PasswordHash);
+            var user = await _authService.ValidateUser(request.Email, request.Password);
 
             if (user == null)
             {

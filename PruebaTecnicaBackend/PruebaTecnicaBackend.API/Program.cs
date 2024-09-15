@@ -7,6 +7,16 @@ using PruebaTecnicaBackend.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 {
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAllOrigins",
+            policy =>
+            {
+                policy.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+    });
     builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -42,6 +52,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
+    app.UseCors("AllowAllOrigins");
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();

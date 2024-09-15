@@ -15,6 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoginFormComponent } from '../login-form/login-form.component';
+import { CreateUserUseCase } from '../../../../domain/usecases/user/create-user.usecase';
+import { CreateUserRequest } from '../../../../domain/models/requests/user/create-user.request';
 
 @Component({
   selector: 'authentication-page-register-form',
@@ -35,6 +37,8 @@ import { LoginFormComponent } from '../login-form/login-form.component';
   styleUrl: './register-form.component.css',
 })
 export class RegisterFormComponent {
+  constructor(private createUserUseCase: CreateUserUseCase) {}
+
   // Register form
   registerForm = new FormGroup({
     fullNameRegister: new FormControl('', Validators.required),
@@ -63,7 +67,22 @@ export class RegisterFormComponent {
   }
 
   onRegisterSubmit() {
-    console.log(this.registerForm.errors);
-    console.log(this.registerForm.value);
+    const formAnswers = this.registerForm.value;
+
+    const createUserRequest: CreateUserRequest = {
+      name: formAnswers.fullNameRegister ?? '',
+      email: formAnswers.emailRegister ?? '',
+      password: formAnswers.passwordRegister ?? '',
+      roleId: null,
+    };
+
+    this.createUserUseCase.execute(createUserRequest).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }
