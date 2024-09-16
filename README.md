@@ -1,7 +1,7 @@
 # prueba_tecnica_net_angular
 Prueba técnica realizada en .NET y Angular
 
-## Cómo confugurar y ejecutar el proyecto
+## Cómo configurar y ejecutar el proyecto
 Dentro de los archivos del repositorio se incluyó un archivo .bat, el cual contiene los comandos necesarios para configurar y abrir el servidor y el frontend del proyecto. Este incluye comando de entity-framework para el seetup de la base de datos y comandos para inicializar el server de .NET y la servir la página de Angular.
 
 Este proyecto fue realizado con SQL Server, por lo que es **necesario** que este se encuentre instalado para la correcta creación de la base de datos al utilizar el archivo .bat.
