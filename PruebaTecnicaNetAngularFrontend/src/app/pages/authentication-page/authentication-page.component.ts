@@ -6,20 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'app-authentication-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -30,7 +22,6 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     MatIconModule,
     MatCheckboxModule,
     MatButtonModule,
-    ReactiveFormsModule,
     LoginFormComponent,
     RegisterFormComponent,
   ],

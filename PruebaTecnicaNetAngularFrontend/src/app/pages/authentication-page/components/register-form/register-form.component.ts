@@ -14,7 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
-import { LoginFormComponent } from '../login-form/login-form.component';
 import { CreateUserUseCase } from '../../../../domain/usecases/user/create-user.usecase';
 import { CreateUserRequest } from '../../../../domain/models/requests/user/create-user.request';
 
@@ -31,7 +30,6 @@ import { CreateUserRequest } from '../../../../domain/models/requests/user/creat
     MatCheckboxModule,
     MatButtonModule,
     ReactiveFormsModule,
-    LoginFormComponent,
   ],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css',

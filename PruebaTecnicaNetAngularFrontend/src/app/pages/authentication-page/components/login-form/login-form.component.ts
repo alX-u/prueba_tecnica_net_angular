@@ -15,6 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoginUseCase } from '../../../../domain/usecases/auth/login.usecase';
 import { LoginRequest } from '../../../../domain/models/requests/auth/login.request';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'authentication-page-login-form',
@@ -34,7 +36,11 @@ import { LoginRequest } from '../../../../domain/models/requests/auth/login.requ
   styleUrl: './login-form.component.css',
 })
 export class LoginFormComponent {
-  constructor(private loginUseCase: LoginUseCase) {}
+  constructor(
+    private loginUseCase: LoginUseCase,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   // Login form
   loginForm = new FormGroup({
@@ -55,7 +61,11 @@ export class LoginFormComponent {
 
     this.loginUseCase.execute(loginRequest).subscribe({
       next: (response) => {
-        console.log(response);
+        this.authService.login(response.token, response.roleName).subscribe({
+          complete: () => {
+            this.router.navigate(['/home']);
+          },
+        });
       },
       error: (error) => {
         console.log(error);

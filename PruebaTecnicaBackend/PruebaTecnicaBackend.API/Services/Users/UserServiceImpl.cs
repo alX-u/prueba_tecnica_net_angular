@@ -90,7 +90,6 @@ public class UserServiceImpl(DataContext context) : IUserService
 
         userEntity.Name = userModel.Name;
         userEntity.Email = userModel.Email;
-        userEntity.Password = userModel.Password;
         userEntity.RoleId = userModel.RoleId;
         userEntity.LastModifiedDateTime = userModel.LastModifiedDateTime;
 

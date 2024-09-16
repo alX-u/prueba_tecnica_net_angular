@@ -2,7 +2,7 @@ POST http://localhost:5175/users
 Content-Type: application/json
 
 {
-    "name": "Ana De Armas",
-    "email": "anadearmas@gmail.com",
-    "password": "anadearmas123"
+    "name": "Okok",
+    "email": "okok@gmail.com",
+    "password": "hola123"
 }

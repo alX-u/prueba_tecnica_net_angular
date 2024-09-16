@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <span>Mi Aplicación</span>
+    <span class="spacer"></span>
+    <ng-container *ngIf="isLoggedIn">
+      <ng-container *ngIf="role === 'Administrador'">
+        <button mat-button [routerLink]="'/home/manage-users'">
+          Administrar Usuarios
+        </button>
+        <button mat-button [routerLink]="'/home/manage-tasks'">
+          Administrar Tareas
+        </button>
+      </ng-container>
+      <ng-container *ngIf="role === 'Supervisor'">
+        <button mat-button [routerLink]="'/home/assign-tasks'">
+          Asignar Tareas
+        </button>
+      </ng-container>
+      <ng-container *ngIf="role === 'Empleado'">
+        <button mat-button [routerLink]="'/home/my-tasks'">Mis Tareas</button>
+      </ng-container>
+      <button mat-button (click)="logout()">Cerrar Sesión</button>
+    </ng-container>
+    <ng-container *ngIf="!isLoggedIn">
+      <button mat-button [routerLink]="'/authentication'">Inicia Sesión</button>
+    </ng-container>
+  </mat-toolbar>
+
+  <div class="content user-not-logged" *ngIf="!isLoggedIn">
+    <h1>¡BIENVENIDO!</h1>
+    <p>Por favor, inicia sesión</p>
+  </div>
+  <div class="content user-not-logged" *ngIf="isLoggedIn && role === 'Sin rol'">
+    <h1>Ya casi...</h1>
+    <p>Espera a que un administrador te otorgue un rol</p>
+  </div>
+  <div class="manage-users" *ngIf="isLoggedIn && role === 'Administrador'">
+    <h2 class="px-2 pt-2">Administrador</h2>
+    <hr />
+    <router-outlet></router-outlet>
+  </div>
+</div>

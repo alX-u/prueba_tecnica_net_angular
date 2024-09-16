@@ -31,6 +31,8 @@ namespace PruebaTecnicaBackend.API.Data
                 .HasForeignKey(t => t.AssignedTo)
                 .OnDelete(DeleteBehavior.SetNull);
 
+            Guid adminRoleId = Guid.NewGuid();
+
             // Seed data for UserRoleEntity
             modelBuilder.Entity<UserRoleEntity>().HasData(
                 new UserRoleEntity
@@ -53,10 +55,23 @@ namespace PruebaTecnicaBackend.API.Data
                 },
                 new UserRoleEntity
                 {
-                    Id = Guid.NewGuid(),
+                    Id = adminRoleId,
                     Name = "Administrador",
                     CreatedDateTime = DateTime.UtcNow
                 }
+            );
+
+            modelBuilder.Entity<UserEntity>().HasData(
+               new UserEntity
+               {
+                   Id = Guid.NewGuid(),
+                   Name = "Admin",
+                   Email = "admin@gmail.com",
+                   Password = BCrypt.Net.BCrypt.HashPassword("admin123"),
+                   RoleId = adminRoleId,
+                   CreatedDateTime = DateTime.UtcNow,
+                   LastModifiedDateTime = DateTime.UtcNow
+               }
             );
         }
     }

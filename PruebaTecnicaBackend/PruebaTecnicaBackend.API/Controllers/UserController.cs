@@ -189,7 +189,7 @@ namespace PruebaTecnicaBackend.API.Controllers
                     id,
                     request.Name,
                     request.Email,
-                    request.Password,
+                    "",
                     request.RoleId,
                     DateTime.Now, // Value won't change
                     DateTime.Now);

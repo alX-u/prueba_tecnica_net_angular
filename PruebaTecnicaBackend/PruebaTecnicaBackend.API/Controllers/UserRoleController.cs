@@ -8,7 +8,6 @@ namespace PruebaTecnicaBackend.API.Controllers
     [Route("roles")]
     public class UserRoleController(IUserRoleService userRoleService) : ControllerBase
     {
-
         private readonly IUserRoleService _userRoleService = userRoleService;
 
         [Authorize(Roles = "Administrador")]
@@ -17,6 +16,14 @@ namespace PruebaTecnicaBackend.API.Controllers
         {
             var roles = await _userRoleService.GetRoles();
             return Ok(roles);
+        }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpGet("{id:guid}")]
+        public async Task<IActionResult> GetRoleNameById(Guid id)
+        {
+            var roleName = await _userRoleService.GetRoleNameById(id);
+            return Ok(roleName);
         }
     }
 }

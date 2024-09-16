@@ -1,0 +1,14 @@
+mat-form-field {
+  width: 40%;
+  margin-bottom: 20px;
+}
+
+.login-checkbox {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  width: 10%;
+  margin-bottom: 10px;
+}

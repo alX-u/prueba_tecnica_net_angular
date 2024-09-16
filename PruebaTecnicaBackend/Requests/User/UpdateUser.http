@@ -6,6 +6,5 @@ Content-Type: application/json
 {
     "name": "Mi usuario modificado",
     "email": "correocambiado@gmail.com",
-    "passwordHash": "hola123",
     "roleId": "05DF3BF5-873F-41A6-82C7-942B427EA502"
 }
