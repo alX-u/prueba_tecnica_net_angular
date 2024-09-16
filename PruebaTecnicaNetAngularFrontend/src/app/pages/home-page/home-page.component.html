@@ -39,4 +39,9 @@
     <hr />
     <router-outlet></router-outlet>
   </div>
+  <div class="manage-users" *ngIf="isLoggedIn && role === 'Supervisor'">
+    <h2 class="px-2 pt-2">Supervisor</h2>
+    <hr />
+    <router-outlet></router-outlet>
+  </div>
 </div>

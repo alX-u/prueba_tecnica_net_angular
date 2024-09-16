@@ -11,6 +11,8 @@ export abstract class UserRepository {
 
   abstract getUsers(): Observable<UserModel[]>;
 
+  abstract getEmployees(): Observable<UserModel[]>;
+
   abstract deleteUser(id: string): Observable<void>;
 
   abstract updateUser(id: string, request: UpdateUserRequest): Observable<void>;

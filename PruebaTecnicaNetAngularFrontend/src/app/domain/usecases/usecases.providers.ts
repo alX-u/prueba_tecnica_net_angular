@@ -18,10 +18,12 @@ import { UserTaskRepositoryImpl } from '../../data/repositories/user-task/user-t
 import { GetUserTasksUseCase } from './task/get-user-tasks.usecase';
 import { UpdateUserTaskUseCase } from './task/update-user-task.usecase';
 import { DeleteUserTaskUseCase } from './task/delete-user-task.usecase';
+import { GetEmployeesUseCase } from './user/get-employees.usecase';
 
 export const useCaseProviders: Provider[] = [
   CreateUserUseCase,
   GetUsersUseCase,
+  GetEmployeesUseCase,
   UpdateUserUseCase,
   DeleteUserUseCase,
   LoginUseCase,

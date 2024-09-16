@@ -41,6 +41,20 @@ export class UserRepositoryImpl extends UserRepository {
     return response;
   }
 
+  getEmployees(): Observable<UserModel[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    var response = this.http.get<UserModel[]>(
+      `${this.apiUrl}/users/employees`,
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+
   updateUser(id: string, request: UpdateUserRequest): Observable<void> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
