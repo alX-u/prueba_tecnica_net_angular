@@ -116,7 +116,7 @@ namespace PruebaTecnicaBackend.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador, Supervisor")]
+        [Authorize(Roles = "Administrador, Supervisor, Empleado")]
         [HttpGet("employees")]
         public async Task<IActionResult> GetEmployees()
         {

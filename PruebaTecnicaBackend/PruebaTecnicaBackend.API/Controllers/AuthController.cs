@@ -26,7 +26,7 @@ namespace PruebaTecnicaBackend.API.Controllers
 
             var token = _authService.GenerateToken(user.Id, user.Email, roleName);
 
-            return Ok(new { token, roleName });
+            return Ok(new { token, roleName, user.Id });
         }
     }
 }

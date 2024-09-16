@@ -55,10 +55,6 @@ export class UserTaskRepositoryImpl extends UserTaskRepository {
     return response;
   }
 
-  getUserTask(id: string): Observable<UserTaskModel> {
-    throw new Error('Method not implemented.');
-  }
-
   updateUserTask(id: string, request: UpdateUserTaskRequest): Observable<void> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,

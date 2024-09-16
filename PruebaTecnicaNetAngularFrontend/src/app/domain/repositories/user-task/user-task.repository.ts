@@ -15,8 +15,6 @@ export abstract class UserTaskRepository {
 
   abstract getUserTasks(): Observable<UserTaskModel[]>;
 
-  abstract getUserTask(id: string): Observable<UserTaskModel>;
-
   abstract updateUserTask(
     id: string,
     request: UpdateUserTaskRequest

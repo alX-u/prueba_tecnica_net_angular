@@ -44,4 +44,9 @@
     <hr />
     <router-outlet></router-outlet>
   </div>
+  <div class="manage-users" *ngIf="isLoggedIn && role === 'Empleado'">
+    <h2 class="px-2 pt-2">Empleado</h2>
+    <hr />
+    <router-outlet></router-outlet>
+  </div>
 </div>

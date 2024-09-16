@@ -19,11 +19,13 @@ import { GetUserTasksUseCase } from './task/get-user-tasks.usecase';
 import { UpdateUserTaskUseCase } from './task/update-user-task.usecase';
 import { DeleteUserTaskUseCase } from './task/delete-user-task.usecase';
 import { GetEmployeesUseCase } from './user/get-employees.usecase';
+import { GetMyTasksUseCase } from './user/get-my-tasks.usecase';
 
 export const useCaseProviders: Provider[] = [
   CreateUserUseCase,
   GetUsersUseCase,
   GetEmployeesUseCase,
+  GetMyTasksUseCase,
   UpdateUserUseCase,
   DeleteUserUseCase,
   LoginUseCase,

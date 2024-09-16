@@ -61,11 +61,13 @@ export class LoginFormComponent {
 
     this.loginUseCase.execute(loginRequest).subscribe({
       next: (response) => {
-        this.authService.login(response.token, response.roleName).subscribe({
-          complete: () => {
-            this.router.navigate(['/home']);
-          },
-        });
+        this.authService
+          .login(response.token, response.roleName, response.id)
+          .subscribe({
+            complete: () => {
+              this.router.navigate(['/home']);
+            },
+          });
       },
       error: (error) => {
         console.log(error);

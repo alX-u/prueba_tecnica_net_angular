@@ -22,7 +22,7 @@ import { UpdateUserTaskUseCase } from '../../../../../../domain/usecases/task/up
 import { GetEmployeesUseCase } from '../../../../../../domain/usecases/user/get-employees.usecase';
 
 @Component({
-  selector: 'assign-tasks-update-employees-task',
+  selector: 'my-tasks-update-task-status',
   standalone: true,
   imports: [
     CommonModule,
@@ -37,10 +37,10 @@ import { GetEmployeesUseCase } from '../../../../../../domain/usecases/user/get-
     MatOption,
     MatSelectModule,
   ],
-  templateUrl: './update-employees-task.component.html',
-  styleUrl: './update-employees-task.component.css',
+  templateUrl: './update-task-status.component.html',
+  styleUrl: './update-task-status.component.css',
 })
-export class UpdateEmployeesTaskComponent {
+export class MyTasksUpdateTaskStatusComponent {
   @Input() task?: UserTaskModel;
   @Output() userTaskCreated = new EventEmitter<void>();
 
@@ -72,10 +72,11 @@ export class UpdateEmployeesTaskComponent {
         status: this.task.status,
         assignedTo: this.task.assignedTo,
       });
-    }
 
-    this.taskForm.get('title')?.disable();
-    this.taskForm.get('description')?.disable();
+      this.taskForm.get('title')?.disable();
+      this.taskForm.get('description')?.disable();
+      this.taskForm.get('assignedTo')?.disable();
+    }
   }
 
   onSubmit() {

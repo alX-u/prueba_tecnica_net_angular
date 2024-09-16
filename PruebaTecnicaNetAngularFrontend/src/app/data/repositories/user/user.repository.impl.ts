@@ -7,6 +7,7 @@ import { CreateUserResponse } from '../../../domain/models/responses/user/create
 import { UserModel } from '../../../domain/models/user.model';
 import { AuthService } from '../../../services/auth.service';
 import { UpdateUserRequest } from '../../../domain/models/requests/user/update-user-request';
+import { UserTaskModel } from '../../../domain/models/user-task.model';
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +49,20 @@ export class UserRepositoryImpl extends UserRepository {
 
     var response = this.http.get<UserModel[]>(
       `${this.apiUrl}/users/employees`,
+      {
+        headers,
+      }
+    );
+    return response;
+  }
+
+  getMyTasks(id: string): Observable<UserTaskModel[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    var response = this.http.get<UserTaskModel[]>(
+      `${this.apiUrl}/users/${id}/tasks`,
       {
         headers,
       }

@@ -1,6 +1,6 @@
 <div class="content users-list" *ngIf="showTasksList">
   <div class="d-flex flex-row justify-content-between align-items-center">
-    <h3 class="mb-3">Asignar Tareas</h3>
+    <h3 class="mb-3">Mis Tareas</h3>
   </div>
 
   <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
@@ -49,8 +49,8 @@
   </table>
 </div>
 <div class="content create-user-form" *ngIf="showUserTaskForm">
-  <assign-tasks-update-employees-task
+  <my-tasks-update-task-status
     [task]="taskToEdit"
     (userTaskCreated)="handleUserTaskCreated()"
-  ></assign-tasks-update-employees-task>
+  ></my-tasks-update-task-status>
 </div>

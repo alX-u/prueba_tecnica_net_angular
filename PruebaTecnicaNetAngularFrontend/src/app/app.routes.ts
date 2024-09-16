@@ -4,6 +4,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HomePageManageUsersComponent } from './pages/home-page/pages/manage-users/manage-users.component';
 import { HomePageManageTasksComponent } from './pages/home-page/pages/manage-tasks/manage-tasks.component';
 import { HomePageAssignTasksComponent } from './pages/home-page/pages/assign-tasks/assign-tasks.component';
+import { HomePageMyTasksComponent } from './pages/home-page/pages/my-tasks/my-tasks.component';
 
 export const routes: Routes = [
   { path: 'authentication', component: AuthenticationPageComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
       },
       { path: 'manage-tasks', component: HomePageManageTasksComponent },
       { path: 'assign-tasks', component: HomePageAssignTasksComponent },
+      { path: 'my-tasks', component: HomePageMyTasksComponent },
     ],
   },
   { path: '', redirectTo: '/authentication', pathMatch: 'full' },
