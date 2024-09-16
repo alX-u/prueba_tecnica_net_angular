@@ -12,6 +12,12 @@ import { UserRoleRepositoryImpl } from '../../data/repositories/user-role/user-r
 import { DeleteUserUseCase } from './user/delete-user.usecase';
 import { UpdateUserUseCase } from './user/update-user.usecase';
 import { GetUserRoleByIdUseCase } from './user-role/get-user-role-by-id.usecase';
+import { CreateUserTaskUseCase } from './task/create-user-task.usecase';
+import { UserTaskRepository } from '../repositories/user-task/user-task.repository';
+import { UserTaskRepositoryImpl } from '../../data/repositories/user-task/user-task.repository.impl';
+import { GetUserTasksUseCase } from './task/get-user-tasks.usecase';
+import { UpdateUserTaskUseCase } from './task/update-user-task.usecase';
+import { DeleteUserTaskUseCase } from './task/delete-user-task.usecase';
 
 export const useCaseProviders: Provider[] = [
   CreateUserUseCase,
@@ -21,7 +27,12 @@ export const useCaseProviders: Provider[] = [
   LoginUseCase,
   GetUserRolesUseCase,
   GetUserRoleByIdUseCase,
+  CreateUserTaskUseCase,
+  GetUserTasksUseCase,
+  UpdateUserTaskUseCase,
+  DeleteUserTaskUseCase,
   { provide: UserRepository, useClass: UserRepositoryImpl },
   { provide: AuthRepository, useClass: AuthRepositoryImpl },
   { provide: UserRoleRepository, useClass: UserRoleRepositoryImpl },
+  { provide: UserTaskRepository, useClass: UserTaskRepositoryImpl },
 ];

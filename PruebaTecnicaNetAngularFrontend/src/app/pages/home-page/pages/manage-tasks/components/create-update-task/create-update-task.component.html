@@ -1,0 +1,43 @@
+<form
+  class="d-flex flex-column align-items-center"
+  [formGroup]="taskForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field appearance="outline">
+    <mat-label>Título</mat-label>
+    <input matInput id="title" formControlName="title" />
+    <mat-error *ngIf="taskForm.get('title')!.hasError('required')">
+      El título es requerido
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Descripción</mat-label>
+    <input matInput id="description" formControlName="description" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="status">
+      <mat-option
+        *ngFor="let taskStatus of taskStatusList; let i = index"
+        [value]="i"
+      >
+        {{ taskStatus }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="taskForm.get('status')!.hasError('required')">
+      El estado es requerido
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Asignar A</mat-label>
+    <mat-select formControlName="assignedTo">
+      <mat-option *ngFor="let user of users" [value]="user.id">
+        {{ user.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="login-button" type="submit">
+    {{ task ? "Actualizar Tarea" : "Añadir Tarea" }}
+  </button>
+</form>
